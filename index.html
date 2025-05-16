@@ -1,0 +1,2867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+  <title>REVO TECH - Galahitiya Central College</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            secondary: {
+              50: '#fefce8',
+              100: '#fef9c3',
+              200: '#fef08a',
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+              700: '#a16207',
+              800: '#854d0e',
+              900: '#713f12',
+            },
+          },
+          screens: {
+            'xs': '475px',
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px',
+          }
+        },
+      },
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #1d4ed8;
+      --secondary: #eab308;
+      --secondary-dark: #ca8a04;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .gradient-bg {
+      background-image: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .gradient-border:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      margin: 20px auto;
+      background-image: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    @media (hover: none) {
+      .card-hover:hover {
+        transform: none;
+      }
+    }
+
+    .touch-device .card-hover.active {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradientAnimation 15s ease infinite;
+    }
+
+    .animate-ping-slow {
+      animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+      75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    .animate-spin-slow {
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Timeline styles */
+    .timeline-container {
+      position: relative;
+    }
+
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: var(--primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 10px 40px;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+
+    .timeline-left {
+      left: 0;
+    }
+
+    .timeline-right {
+      left: 50%;
+    }
+
+    .timeline-left::after {
+      right: -10px;
+    }
+
+    .timeline-right::after {
+      left: -10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline-container::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .timeline-right {
+        left: 0;
+      }
+    }
+
+    /* Dark mode styles */
+    .dark {
+      color-scheme: dark;
+    }
+
+    .dark body {
+      background-color: #111827;
+      color: #f9fafb;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+    }
+
+    /* Slider */
+    .slider {
+      transition: transform 0.5s ease;
+    }
+
+    /* Tabs */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-trigger.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.3);
+      pointer-events: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      
+      .tabs::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    
+    /* Enhanced responsive adjustments */
+    @media (max-width: 640px) {
+      .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      
+      h1 {
+        font-size: 2.25rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .hero-card {
+        transform: none !important;
+      }
+    }
+
+    /* Better mobile-specific animations */
+    @media (max-width: 768px) and (pointer: coarse) {
+      .animate-float {
+        animation-duration: 4s;
+        animation-timing-function: ease-out;
+      }
+      
+      .animate-gradient {
+        animation-duration: 8s;
+      }
+      
+      .card-hover:active {
+        transform: translateY(-5px);
+        transition: transform 0.2s ease;
+      }
+      
+      .hero-section {
+        min-height: 100vh;
+        height: auto;
+      }
+    }
+
+    /* Additional tablet optimizations */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .container {
+        max-width: 100%;
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-7px);
+      }
+    }
+
+    /* Device-aware animations */
+    @media (hover: hover) {
+      .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    }
+
+    @media (hover: none) {
+      .card-hover {
+        transition: transform 0.2s ease;
+      }
+      
+      .card-hover:active {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Prevent body scrolling when mobile menu is open */
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* Improve touch targets */
+    @media (pointer: coarse) {
+      button, 
+      a.nav-link,
+      a.mobile-nav-link,
+      .tab-trigger,
+      #back-to-top {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem 0.75rem;
+      }
+    }
+
+    /* Accessibility enhancements */
+    @media (prefers-reduced-motion) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float,
+      .animate-gradient,
+      .animate-ping-slow,
+      .animate-spin-slow,
+      .card-hover:hover {
+        animation: none;
+        transition: none;
+        transform: none;
+      }
+    }
+
+    /* Touch device optimizations */
+    .touch-device .hero-card {
+      transform: none !important;
+    }
+
+    /* Swipe gestures for sliders */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    /* Improved accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Optimized animations for mobile */
+    @media (max-width: 768px) {
+      .animate-float {
+        animation-duration: 4s;
+      }
+      
+      .animate-gradient {
+        animation-duration: 10s;
+      }
+    }
+
+    /* Add these new animations to your existing styles */
+    @keyframes float-slow {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes gradient-text {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse-slow {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-float-slow {
+      animation: float-slow 6s ease-in-out infinite;
+    }
+
+    .animate-gradient-text {
+      background-size: 200% auto;
+      animation: gradient-text 8s linear infinite;
+    }
+
+    .animate-fade-in {
+      animation: fade-in 1s ease-out forwards;
+    }
+
+    .animate-pulse-slow {
+      animation: pulse-slow 3s ease-in-out infinite;
+    }
+
+    /* Enhanced mobile responsiveness */
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 100vh;
+        padding-top: 120px;
+      }
+
+      .hero-card {
+        transform: none !important;
+        animation: none !important;
+      }
+
+      .animate-float-slow {
+        animation: none;
+      }
+
+      .animate-gradient-text {
+        animation: none;
+      }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .hero-card:hover {
+        transform: none !important;
+      }
+
+      .animate-float-slow {
+        animation: none;
+      }
+    }
+
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float-slow,
+      .animate-gradient-text,
+      .animate-fade-in,
+      .animate-pulse-slow,
+      .animate-ping-slow,
+      .animate-spin-slow {
+        animation: none;
+      }
+    }
+
+    /* Add these new mobile-specific styles */
+    .gradient-text-mobile {
+      background: linear-gradient(45deg, #60a5fa, #fbbf24);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient-shift 3s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Mobile-specific animations */
+    @media (max-width: 768px) {
+      .animate-fade-in {
+        animation: fade-in 0.8s ease-out forwards;
+      }
+
+      .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+      }
+
+      .animate-ping-slow {
+        animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .hover\:scale-105:hover {
+        transform: none !important;
+      }
+    }
+
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-fade-in,
+      .animate-pulse-slow,
+      .animate-ping-slow,
+      .animate-bounce,
+      .gradient-text-mobile {
+        animation: none;
+      }
+    }
+
+    /* Contact cards horizontal scroll for mobile */
+    @media (max-width: 1023px) {
+      #contact .flex-row {
+        scrollbar-width: thin;
+        scrollbar-color: #3b82f6 #e5e7eb;
+      }
+      #contact .flex-row::-webkit-scrollbar {
+        height: 8px;
+      }
+      #contact .flex-row::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+        border-radius: 4px;
+      }
+      #contact .flex-row::-webkit-scrollbar-track {
+        background: #e5e7eb;
+        border-radius: 4px;
+      }
+    }
+
+    /* Mobile-specific animations */
+    .particle-mobile {
+      animation: float-mobile 6s ease-in-out infinite;
+    }
+
+    @keyframes float-mobile {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+
+    .gradient-text-mobile {
+      background: linear-gradient(45deg, #60a5fa, #fbbf24);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient-shift 3s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Enhanced mobile animations */
+    @media (max-width: 768px) {
+      .animate-fade-in {
+        animation: fade-in 0.8s ease-out forwards;
+      }
+
+      .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+      }
+
+      .animate-float-slow {
+        animation: float-slow 6s ease-in-out infinite;
+      }
+
+      .animate-gradient-text {
+        background-size: 200% auto;
+        animation: gradient-text 8s linear infinite;
+      }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .hover\:scale-105:hover {
+        transform: none !important;
+      }
+    }
+
+    /* Reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-fade-in,
+      .animate-pulse-slow,
+      .animate-float-slow,
+      .animate-gradient-text,
+      .animate-bounce,
+      .gradient-text-mobile {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-blue-950">
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex justify-between items-center">
+        <a href="#" class="flex items-center space-x-2">
+          <div class="flex items-center">
+            <img src="img/revotech2.png" alt="REVO TECH Logo" class="h-10 w-auto mr-2">
+            <span class="text-2xl font-bold gradient-text">REVO TECH</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <ul class="flex space-x-6">
+            <li><a href="#home" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="home">Home</a></li>
+            <li><a href="#about" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="about">About</a></li>
+            <li><a href="#school" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="school">Our School</a></li>
+            <li><a href="#technoriens" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="technoriens">Technoriens</a></li>
+            <li><a href="#features" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="features">Activities</a></li>
+            <li><a href="#projects" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="projects">Projects</a></li>
+            <li><a href="#team" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="team">Team</a></li>
+            <li><a href="#contact" class="nav-link text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 px-1" data-section="contact">Contact</a></li>
+          </ul>
+          <button id="theme-toggle" class="p-2 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle dark mode">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation Toggle -->
+        <div class="md:hidden flex items-center">
+          <button id="theme-toggle-mobile" class="p-2 mr-2 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle dark mode">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline"></i>
+          </button>
+          <button id="mobile-menu-toggle" class="p-2 rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+      <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+        <button id="close-menu" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="p-4">
+        <ul class="space-y-4">
+          <li><a href="#home" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
+          <li><a href="#about" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a></li>
+          <li><a href="#services" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Services</a></li>
+          <li><a href="#projects" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Projects</a></li>
+          <li><a href="#testimonials" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Testimonials</a></li>
+          <li><a href="#team" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Team</a></li>
+          <li><a href="#contact" class="mobile-nav-link block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40"></div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section relative min-h-screen pt-24 pb-16 md:pt-40 md:pb-28 overflow-hidden">
+    <!-- Desktop Hero Section (hidden on mobile) -->
+    <div class="hidden md:block">
+      <!-- Animated background gradient -->
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/70 via-transparent to-yellow-500/50 z-0 animate-gradient"></div>
+      
+      <!-- Animated particles -->
+      <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+      <!-- Animated tech pattern overlay -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDIuMjA5LTEuNzkxIDQtNCA0cy00LTEuNzkxLTQtNCAxLjc5MS00IDQtNCA0IDEuNzkxIDQgNHoiIGZpbGw9IiMwMDAiLz48L2c+PC9zdmc+')]"></div>
+      </div>
+
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Left content -->
+          <div data-aos="fade-right" data-aos-duration="1000" class="relative">
+            <!-- Floating badge -->
+            <div class="inline-block mb-2 px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium text-sm animate-float" style="animation-delay: 0.2s">
+              Galahitiya Central College
+            </div>
+
+            <!-- Main heading with animated gradient -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+              Welcome to <span class="gradient-text animate-gradient-text">REVO TECH</span>
+            </h1>
+
+            <!-- Animated description -->
+            <p class="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl animate-fade-in" style="animation-delay: 0.4s">
+              Where technology meets innovation and education. Join us to transform your ideas into reality.
+            </p>
+
+            <!-- Animated buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 animate-fade-in" style="animation-delay: 0.6s">
+              <a href="#contact" class="inline-block text-center px-6 py-3 rounded-md bg-gradient-to-r from-blue-600 to-yellow-500 hover:from-blue-700 hover:to-yellow-600 text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg animate-pulse-slow">
+                Join Us <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="#about" class="inline-block text-center px-6 py-3 rounded-md border border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300">
+                Learn More
+              </a>
+            </div>
+
+            <!-- Floating tech icons -->
+            <div class="absolute -left-4 top-1/2 transform -translate-y-1/2 hidden lg:block">
+              <div class="space-y-4">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center animate-float" style="animation-delay: 0.3s">
+                  <i class="fas fa-code text-blue-600"></i>
+                </div>
+                <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center animate-float" style="animation-delay: 0.5s">
+                  <i class="fas fa-microchip text-yellow-500"></i>
+                </div>
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center animate-float" style="animation-delay: 0.7s">
+                  <i class="fas fa-robot text-blue-600"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right content - 3D cards -->
+          <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+            <div class="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden perspective">
+              <!-- Main card container with 3D effect -->
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-yellow-500/10 rounded-2xl backdrop-blur-[2px] transform" id="hero-card-container"></div>
+
+              <!-- Floating cards with enhanced animations -->
+              <div class="absolute top-10 left-5 md:top-10 md:left-10 p-4 md:p-6 bg-white/90 dark:bg-gray-800/90 rounded-xl shadow-xl backdrop-blur-sm z-10 hero-card animate-float-slow" data-offset="-0.2" style="animation-delay: 0.2s">
+                <div class="flex items-center space-x-3">
+                  <div class="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg">
+                    <i class="fas fa-code text-blue-600 text-xl sm:text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-base sm:text-lg font-bold mb-1">Coding Workshops</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Modern programming skills</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="absolute top-1/2 right-5 md:right-16 p-4 md:p-6 bg-white/90 dark:bg-gray-800/90 rounded-xl shadow-xl backdrop-blur-sm z-10 hero-card animate-float-slow" data-offset="0.3" style="animation-delay: 0.4s">
+                <div class="flex items-center space-x-3">
+                  <div class="p-2 bg-yellow-100 dark:bg-yellow-900/50 rounded-lg">
+                    <i class="fas fa-microchip text-yellow-500 text-xl sm:text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-base sm:text-lg font-bold mb-1">Tech Projects</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Build real-world solutions</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="absolute bottom-10 left-5 md:bottom-20 md:left-20 p-4 md:p-6 bg-white/90 dark:bg-gray-800/90 rounded-xl shadow-xl backdrop-blur-sm z-10 hero-card animate-float-slow" data-offset="0.1" style="animation-delay: 0.6s">
+                <div class="flex items-center space-x-3">
+                  <div class="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg">
+                    <i class="fas fa-bolt text-yellow-500 text-xl sm:text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 class="text-base sm:text-lg font-bold mb-1">Competitions</h3>
+                    <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Showcase your skills</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Animated center logo -->
+              <div class="absolute inset-0 flex items-center justify-center z-0">
+                <div class="relative h-[150px] w-[150px] sm:h-[200px] sm:w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]">
+                  <!-- Pulsing circles -->
+                  <div class="absolute inset-0 bg-blue-600/20 dark:bg-blue-700/20 rounded-full opacity-70 animate-ping-slow"></div>
+                  <div class="absolute inset-4 bg-yellow-500/20 dark:bg-yellow-600/20 rounded-full opacity-70 animate-ping-slow" style="animation-delay: 0.5s;"></div>
+
+                  <!-- Rotating SVG circles -->
+                  <svg class="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(59, 130, 246, 0.2)" stroke-width="0.5" stroke-dasharray="0.5,1"></circle>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(234, 179, 8, 0.2)" stroke-width="0.5" stroke-dasharray="0.5,1"></circle>
+                  </svg>
+
+                  <!-- Center logo with pulse effect -->
+                  <div class="absolute inset-8 rounded-full bg-gradient-to-br from-blue-600/80 to-blue-400 flex items-center justify-center text-white font-bold text-lg animate-pulse">
+                    REVO
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enhanced scroll indicator -->
+      <div id="scroll-indicator" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+        <p class="text-sm text-white/70 mb-2 animate-pulse">Scroll to explore</p>
+        <div class="animate-bounce">
+          <i class="fas fa-chevron-down text-white/70 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Hero Section (visible only on mobile) -->
+    <div class="md:hidden">
+      <!-- Mobile background with animated gradient -->
+      <div class="absolute inset-0 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 z-0 animate-gradient" style="background-size: 400% 400%; animation-duration: 15s;">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent animate-pulse-slow backdrop-blur-sm"></div>
+        <!-- Enhanced animated particles for mobile with parallax effect -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="particle-mobile absolute w-2 h-2 bg-blue-400/30 rounded-full animate-float-slow transform hover:scale-150 transition-transform duration-300" style="top: 20%; left: 10%; animation-delay: 0s; transform: translateZ(1px);"></div>
+          <div class="particle-mobile absolute w-3 h-3 bg-blue-300/30 rounded-full animate-float-slow transform hover:scale-150 transition-transform duration-300" style="top: 40%; left: 80%; animation-delay: 0.5s; transform: translateZ(2px);"></div>
+          <div class="particle-mobile absolute w-2 h-2 bg-blue-500/30 rounded-full animate-float-slow transform hover:scale-150 transition-transform duration-300" style="top: 60%; left: 20%; animation-delay: 1s; transform: translateZ(3px);"></div>
+          <div class="particle-mobile absolute w-3 h-3 bg-blue-400/30 rounded-full animate-float-slow transform hover:scale-150 transition-transform duration-300" style="top: 80%; left: 70%; animation-delay: 1.5s; transform: translateZ(4px);"></div>
+          <!-- Additional interactive particles -->
+          <div class="particle-mobile absolute w-4 h-4 bg-yellow-400/30 rounded-full animate-pulse-slow transform hover:scale-150 transition-transform duration-300" style="top: 30%; left: 40%; animation-delay: 2s; transform: translateZ(5px);"></div>
+          <div class="particle-mobile absolute w-3 h-3 bg-purple-400/30 rounded-full animate-float-slow transform hover:scale-150 transition-transform duration-300" style="top: 70%; left: 30%; animation-delay: 2.5s; transform: translateZ(6px);"></div>
+        </div>
+      </div>
+
+      <!-- Mobile content container -->
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col items-center justify-center min-h-[calc(100vh-6rem)]">
+          <!-- Enhanced Mobile logo animation with 3D effects -->
+          <div class="relative w-48 h-48 mb-8 animate-fade-in transform-gpu perspective-1000" style="animation-delay: 0.2s">
+            <!-- Animated rings with glow effects -->
+            <div class="absolute inset-0 bg-blue-600/20 rounded-full animate-ping-slow blur-sm"></div>
+            <div class="absolute inset-4 bg-yellow-500/20 rounded-full animate-ping-slow blur-sm" style="animation-delay: 0.5s"></div>
+            <div class="absolute inset-8 bg-purple-500/20 rounded-full animate-ping-slow blur-sm" style="animation-delay: 1s"></div>
+            <!-- Interactive logo container with hover effects -->
+            <div class="absolute inset-0 flex items-center justify-center group hover:scale-105 transition-transform duration-300 ease-out">
+              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 flex items-center justify-center text-white font-bold text-2xl animate-pulse-slow shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:rotate-6 group-hover:scale-110">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100 animate-gradient-text">REVO</span>
+              </div>
+            </div>
+            <!-- Enhanced rotating circles with dynamic effects -->
+            <div class="absolute inset-0 animate-spin-slow hover:animate-spin group-hover:opacity-80 transition-opacity duration-300">
+              <svg class="w-full h-full filter drop-shadow-lg" viewBox="0 0 100 100">
+                <defs>
+                  <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color: rgba(59, 130, 246, 0.3)"/>
+                    <stop offset="100%" style="stop-color: rgba(59, 130, 246, 0.1)"/>
+                  </linearGradient>
+                  <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color: rgba(234, 179, 8, 0.3)"/>
+                    <stop offset="100%" style="stop-color: rgba(234, 179, 8, 0.1)"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient1)" stroke-width="0.5" stroke-dasharray="0.5,1" class="transform hover:scale-105 transition-transform duration-300"></circle>
+                <circle cx="50" cy="50" r="35" fill="none" stroke="url(#gradient2)" stroke-width="0.5" stroke-dasharray="0.5,1" class="transform hover:scale-105 transition-transform duration-300"></circle>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Mobile title and description -->
+          <div class="text-center mb-8 animate-fade-in" style="animation-delay: 0.4s">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full bg-blue-100/20 text-blue-300 font-medium text-sm animate-pulse-slow">
+              Galahitiya Central College
+            </div>
+            <h1 class="text-4xl font-extrabold tracking-tight mb-4 text-white">
+              Welcome to <span class="gradient-text-mobile animate-gradient-text">REVO TECH</span>
+            </h1>
+            <p class="text-lg text-blue-100/80 mb-6 animate-fade-in" style="animation-delay: 0.6s">
+              Where technology meets innovation and education.
+            </p>
+          </div>
+
+          <!-- Mobile feature cards -->
+          <div class="w-full space-y-4 mb-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 transform transition-all duration-300 hover:scale-105 animate-fade-in" style="animation-delay: 0.8s">
+              <div class="flex items-center space-x-3">
+                <div class="p-2 bg-blue-500/20 rounded-lg animate-pulse-slow">
+                  <i class="fas fa-code text-blue-300 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-bold">Coding Workshops</h3>
+                  <p class="text-blue-100/70 text-sm">Modern programming skills</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 transform transition-all duration-300 hover:scale-105 animate-fade-in" style="animation-delay: 1s">
+              <div class="flex items-center space-x-3">
+                <div class="p-2 bg-yellow-500/20 rounded-lg animate-pulse-slow">
+                  <i class="fas fa-microchip text-yellow-300 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-bold">Tech Projects</h3>
+                  <p class="text-blue-100/70 text-sm">Build real-world solutions</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 transform transition-all duration-300 hover:scale-105 animate-fade-in" style="animation-delay: 1.2s">
+              <div class="flex items-center space-x-3">
+                <div class="p-2 bg-blue-500/20 rounded-lg animate-pulse-slow">
+                  <i class="fas fa-bolt text-yellow-300 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-bold">Competitions</h3>
+                  <p class="text-blue-100/70 text-sm">Showcase your skills</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile CTA buttons -->
+          <div class="flex flex-col w-full space-y-3 animate-fade-in" style="animation-delay: 1.4s">
+            <a href="#contact" class="w-full text-center px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium transform transition-all duration-300 hover:scale-105 active:scale-95 animate-pulse-slow">
+              Join Us <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            <a href="#about" class="w-full text-center px-6 py-3 rounded-xl border border-blue-400/30 text-blue-100 font-medium backdrop-blur-sm transform transition-all duration-300 hover:bg-blue-500/20 active:scale-95">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-fade-in" style="animation-delay: 1.6s">
+        <p class="text-sm text-blue-200/70 mb-2 animate-pulse">Scroll to explore</p>
+        <div class="animate-bounce">
+          <i class="fas fa-chevron-down text-blue-200/70 text-xl"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white dark:bg-gray-900 relative">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          About <span class="text-blue-600">REVO TECH</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          REVO TECH is Galahitiya Central College's premier technology society, dedicated to fostering
+          innovation, technical skills, and collaborative learning among students.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-md" data-aos="fade-right">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4">Our Mission</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            To empower students with technological knowledge and skills that prepare them for the digital future,
+            while fostering creativity, innovation, and problem-solving abilities.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-md" data-aos="fade-left">
+          <h3 class="text-xl sm:text-2xl font-bold mb-4">Our Vision</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            To create a vibrant community of tech-savvy students who will lead technological innovation and contribute
+            to the digital transformation of society.
+          </p>
+        </div>
+      </div>
+
+      <!-- Our Journey Timeline -->
+      <div class="mb-16">
+        <h3 class="text-2xl md:text-3xl font-bold text-center mb-10" data-aos="fade-up">Our Journey</h3>
+        
+        <div class="timeline-container" data-aos="fade-up">
+          <div class="timeline-item timeline-left" data-aos="fade-right">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2018</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">REVO TECH was founded by a small group of tech enthusiasts at Galahitiya Central College with a vision to promote technology education.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-right" data-aos="fade-left">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2019</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Organized our first coding workshop and hackathon, attracting participants from across the school.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-left" data-aos="fade-right">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2020</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Launched the Technoriens annual technical investigation unit to promote research and innovation among students.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-right" data-aos="fade-left">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2021</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Expanded our activities to include robotics and mobile app development, reaching over 100 active members.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-left" data-aos="fade-right">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2022</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Won first place in the National School Technology Competition with our Smart School Assistant project.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-right" data-aos="fade-left">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2023</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Established partnerships with local tech companies to provide internship opportunities for our members.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item timeline-left" data-aos="fade-right">
+            <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
+              <h4 class="text-lg sm:text-xl font-bold text-blue-600 mb-2">2024</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Celebrating our growth with over 200 members and launching new initiatives to reach more students across Sri Lanka.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover" data-aos="fade-up" data-aos-delay="100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 mb-4">
+            <i class="fas fa-code text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Coding Skills</h3>
+          <p class="text-gray-600 dark:text-gray-300">Learn programming languages, web development, and software engineering principles.</p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover" data-aos="fade-up" data-aos-delay="200">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 mb-4">
+            <i class="fas fa-users text-blue-500"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Community</h3>
+          <p class="text-gray-600 dark:text-gray-300">Join a supportive community of tech enthusiasts and like-minded peers.</p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover" data-aos="fade-up" data-aos-delay="300">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 mb-4">
+            <i class="fas fa-lightbulb text-yellow-500"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Innovation</h3>
+          <p class="text-gray-600 dark:text-gray-300">Develop creative solutions to real-world problems through technology.</p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover" data-aos="fade-up" data-aos-delay="400">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 mb-4">
+            <i class="fas fa-award text-blue-500"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Recognition</h3>
+          <p class="text-gray-600 dark:text-gray-300">Participate in competitions and showcase your skills on a larger platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- School Section -->
+  <section id="school" class="py-20 bg-blue-50 dark:bg-gray-950 relative">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Our <span class="text-blue-600">School</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Galahitiya Central College is a prestigious educational institution committed to excellence in academics, sports, and technology.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="rounded-xl overflow-hidden shadow-lg" data-aos="fade-right">
+          <img src="img/logos.png" alt="Galahitiya Central College" class="w-full h-auto">
+        </div>
+
+        <div data-aos="fade-left">
+          <h3 class="text-2xl font-bold mb-6 text-blue-700 dark:text-blue-400">Galahitiya Central College</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Founded in 1952, Galahitiya Central College has been a beacon of educational excellence in Sri Lanka for over seven decades. Located in the serene surroundings of Galahitiya, our school provides a nurturing environment where students can excel academically and develop holistic skills.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            The school has consistently produced outstanding results in national examinations and has a strong tradition of excellence in sports, arts, and technology. Our dedicated faculty members are committed to providing quality education and mentorship to our students.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+              <h4 class="font-bold text-blue-600 mb-2">Vision</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm">To be a leading educational institution that nurtures well-rounded individuals who contribute positively to society.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+              <h4 class="font-bold text-blue-600 mb-2">Mission</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm">To provide quality education that develops intellectual, physical, social, and emotional capabilities of our students.</p>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Excellence in Education</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Sports & Athletics</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Technology & Innovation</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm">Arts & Culture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technoriens Section -->
+  <section id="technoriens" class="py-20 bg-white dark:bg-gray-900 relative">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          <span class="text-blue-600">Technoriens</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Our annual technical investigation unit dedicated to fostering research, innovation, and problem-solving skills among students.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6 text-blue-700 dark:text-blue-400">What is Technoriens?</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Technoriens is our flagship annual technical investigation unit that brings together students passionate about technology and innovation. Established in 2020, it provides a platform for students to explore cutting-edge technologies, conduct research, and develop solutions to real-world problems.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Each year, Technoriens focuses on a specific theme or challenge, encouraging participants to collaborate, think critically, and apply their technical skills to create innovative solutions. The program culminates in a showcase event where teams present their projects to peers, teachers, and industry professionals.
+          </p>
+          
+          <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800 mb-6">
+            <h4 class="font-bold text-blue-700 dark:text-blue-400 mb-3">Technoriens 2024 Theme</h4>
+            <p class="text-gray-700 dark:text-gray-300 italic">"Sustainable Technology Solutions for Local Communities"</p>
+          </div>
+          
+          <a href="#contact" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all duration-300">
+            Join Technoriens 2024 <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-4">
+              <i class="fas fa-microscope text-blue-600 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Research</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Conduct in-depth research on emerging technologies and their applications.</p>
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 mb-4">
+              <i class="fas fa-lightbulb text-yellow-500 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Innovation</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Develop creative and innovative solutions to real-world challenges.</p>
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
+              <i class="fas fa-users-cog text-green-600 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Collaboration</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Work in teams to combine diverse skills and perspectives.</p>
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center card-hover">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 mb-4">
+              <i class="fas fa-trophy text-purple-600 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Recognition</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">Showcase your work and gain recognition from peers and professionals.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Technoriens Projects -->
+      <div data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-center mb-10">Past Technoriens Projects</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 card-hover">
+            <div class="h-48 overflow-hidden">
+              <img src="img/smart-farming-with-agriculture-iot.jpg" alt="Smart Irrigation System" class="w-full h-full object-cover object-center">
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Technoriens 2021</span>
+              <h4 class="text-xl font-bold mt-3 mb-2">Smart Irrigation System</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">An automated irrigation system that uses soil moisture sensors and weather data to optimize water usage for agricultural purposes.</p>
+              <div class="flex justify-between items-center">
+                <span class="text-blue-600 dark:text-blue-400 text-sm">First Place</span>
+                <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                  Learn more <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 card-hover">
+            <div class="h-48 overflow-hidden">
+              <img src="img/Health Monitoring Wearable.jpg" alt="Health Monitoring Wearable" class="w-full h-full object-cover object-center">
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Technoriens 2022</span>
+              <h4 class="text-xl font-bold mt-3 mb-2">Health Monitoring Wearable</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">A low-cost wearable device that monitors vital health parameters and alerts users and caregivers in case of emergencies.</p>
+              <div class="flex justify-between items-center">
+                <span class="text-blue-600 dark:text-blue-400 text-sm">Second Place</span>
+                <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                  Learn more <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 card-hover">
+            <div class="h-48 overflow-hidden">
+              <img src="img/Waste Sorting Robot.jpg" alt="Waste Sorting Robot" class="w-full h-full object-cover object-center">
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Technoriens 2023</span>
+              <h4 class="text-xl font-bold mt-3 mb-2">Waste Sorting Robot</h4>
+              <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">An AI-powered robot that automatically sorts different types of waste materials to improve recycling efficiency.</p>
+              <div class="flex justify-between items-center">
+                <span class="text-blue-600 dark:text-blue-400 text-sm">First Place</span>
+                <a href="#" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
+                  Learn more <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Our <span class="text-blue-600">Activities</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Explore the wide range of activities and programs we offer to help you develop your technical skills and
+          knowledge.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12" id="activities-container">
+        <!-- Activity cards will be dynamically generated here -->
+      </div>
+
+      <div class="mt-16 bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl overflow-hidden shadow-xl" data-aos="fade-up">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="p-8 md:p-12 flex flex-col justify-center">
+            <span class="mb-4 bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded-full text-sm inline-block">Featured Activity</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Annual Tech Hackathon 2025</h3>
+            <p class="text-blue-100 mb-6">
+              Join us for our biggest event of the year! A 48-hour coding marathon where students collaborate to build
+              innovative solutions to real-world problems.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+              <span class="bg-white/10 text-white border border-white/20 hover:bg-white/20 px-3 py-1 rounded-full text-sm">48 Hours</span>
+              <span class="bg-white/10 text-white border border-white/20 hover:bg-white/20 px-3 py-1 rounded-full text-sm">Team-based</span>
+              <span class="bg-white/10 text-white border border-white/20 hover:bg-white/20 px-3 py-1 rounded-full text-sm">Prizes</span>
+              <span class="bg-white/10 text-white border border-white/20 hover:bg-white/20 px-3 py-1 rounded-full text-sm">All Skill Levels</span>
+            </div>
+            <div class="flex flex-col xs:flex-row gap-3">
+              <a href="#contact" class="inline-block text-center px-6 py-3 rounded-md bg-white text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105">
+                Register Now <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="#" class="inline-block text-center px-6 py-3 rounded-md border border-white/30 text-white hover:bg-white/10 transition-all duration-300">
+                Learn More <i class="fas fa-external-link-alt ml-2"></i>
+              </a>
+            </div>
+          </div>
+          <div class="relative h-48 sm:h-64 md:h-auto overflow-hidden">
+            <img src="img/Hackathons.jpg" alt="Hackathon" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-white/90 dark:bg-gray-800/90 p-4 rounded-full shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-bolt text-yellow-500 text-3xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-950">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Our <span class="text-blue-600">Projects</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Explore the innovative projects created by our talented students, showcasing their skills and creativity.
+        </p>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+          <div class="tabs w-full sm:w-auto overflow-x-auto pb-2">
+            <div class="bg-white dark:bg-gray-800 p-1 shadow-md rounded-lg flex flex-nowrap min-w-max">
+              <button class="tab-trigger px-5 py-2 rounded-md active whitespace-nowrap" data-category="all">All Projects</button>
+              <button class="tab-trigger px-5 py-2 rounded-md whitespace-nowrap" data-category="software">Software</button>
+              <button class="tab-trigger px-5 py-2 rounded-md whitespace-nowrap" data-category="hardware">Hardware</button>
+              <button class="tab-trigger px-5 py-2 rounded-md whitespace-nowrap" data-category="mobile">Mobile</button>
+            </div>
+          </div>
+
+          <div class="filter-dropdown relative">
+            <button id="filter-button" class="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md flex items-center gap-2 bg-white dark:bg-gray-800">
+              <i class="fas fa-filter text-sm"></i>
+              Filter
+              <span id="featured-badge" class="hidden ml-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Featured Only</span>
+            </button>
+            <div id="filter-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-10">
+              <div class="py-1">
+                <button id="show-all" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left font-bold">Show All</button>
+                <button id="show-featured" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left">Featured Only</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content active" data-category="all">
+          <div id="projects-slider" class="relative slider-container">
+            <div class="overflow-hidden">
+              <div class="slider grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Projects will be dynamically inserted here -->
+              </div>
+            </div>
+            
+            <div class="flex justify-center items-center mt-8 space-x-4">
+              <button id="prev-slide" class="h-10 w-10 rounded-full border border-blue-200 hover:border-blue-300 hover:bg-blue-100 dark:border-blue-800 dark:hover:border-blue-700 dark:hover:bg-blue-900/30 flex items-center justify-center" aria-label="Previous slide">
+                <i class="fas fa-chevron-left text-blue-700 dark:text-blue-400"></i>
+              </button>
+
+              <div id="slider-dots" class="flex space-x-2">
+                <!-- Dots will be dynamically inserted here -->
+              </div>
+
+              <button id="next-slide" class="h-10 w-10 rounded-full border border-blue-200 hover:border-blue-300 hover:bg-blue-100 dark:border-blue-800 dark:hover:border-blue-700 dark:hover:bg-blue-900/30 flex items-center justify-center" aria-label="Next slide">
+                <i class="fas fa-chevron-right text-blue-700 dark:text-blue-400"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" data-category="software">
+          <!-- Software projects will be shown here -->
+        </div>
+
+        <div class="tab-content" data-category="hardware">
+          <!-- Hardware projects will be shown here -->
+        </div>
+
+        <div class="tab-content" data-category="mobile">
+          <!-- Mobile projects will be shown here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 bg-white dark:bg-gray-900 overflow-hidden">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Student <span class="text-blue-600">Testimonials</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Hear from our members about how REVO TECH has impacted their learning journey and technical skills.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto relative pb-16">
+        <div class="absolute -top-10 -left-10 text-blue-500/20 dark:text-blue-300/10">
+          <i class="fas fa-quote-left text-6xl"></i>
+        </div>
+
+        <div id="testimonials-slider" class="pt-8 slider-container">
+          <!-- Testimonials will be dynamically inserted here -->
+        </div>
+
+        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
+          <button id="prev-testimonial" class="h-10 w-10 rounded-full bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 shadow-sm flex items-center justify-center" aria-label="Previous testimonial">
+            <i class="fas fa-chevron-left text-blue-600 dark:text-blue-400"></i>
+          </button>
+
+          <div id="testimonial-dots" class="flex items-center space-x-2">
+            <!-- Dots will be dynamically inserted here -->
+          </div>
+
+          <button id="next-testimonial" class="h-10 w-10 rounded-full bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800 hover:border-blue-300 dark:hover:border-blue-700 shadow-sm flex items-center justify-center" aria-label="Next testimonial">
+            <i class="fas fa-chevron-right text-blue-600 dark:text-blue-400"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Meet Our <span class="text-blue-600">Team</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Our dedicated team of student leaders who are passionate about technology and committed to helping others
+          learn and grow.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8" id="team-container">
+        <!-- Team members will be dynamically inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-950">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Get In <span class="text-blue-600">Touch</span>
+        </h2>
+        <div class="gradient-border"></div>
+        <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-lg">
+          Have questions or want to join REVO TECH? Reach out to us and we'll get back to you as soon as possible.
+        </p>
+      </div>
+
+      <!-- Responsive Contact Cards -->
+      <div class="flex flex-row gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:pb-0 lg:mx-0 lg:px-0">
+        <div class="min-w-[80vw] max-w-xs flex-shrink-0 snap-center border-none shadow-md hover:shadow-lg transition-shadow h-full bg-white dark:bg-gray-900 rounded-xl lg:min-w-0 lg:max-w-none" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex flex-col items-center text-center p-6">
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+              <i class="fas fa-map-marker-alt text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Our Location</h3>
+            <p class="text-gray-600 dark:text-gray-300">Galahitiya Central College, Galahitiya, Sri Lanka</p>
+          </div>
+        </div>
+
+        <div class="min-w-[80vw] max-w-xs flex-shrink-0 snap-center border-none shadow-md hover:shadow-lg transition-shadow h-full bg-white dark:bg-gray-900 rounded-xl lg:min-w-0 lg:max-w-none" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex flex-col items-center text-center p-6">
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+              <i class="fas fa-envelope text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Email Us</h3>
+            <p class="text-gray-600 dark:text-gray-300">revotech@galahitiyacc.edu.lk</p>
+          </div>
+        </div>
+
+        <div class="min-w-[80vw] max-w-xs flex-shrink-0 snap-center border-none shadow-md hover:shadow-lg transition-shadow h-full bg-white dark:bg-gray-900 rounded-xl lg:min-w-0 lg:max-w-none" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex flex-col items-center text-center p-6">
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+              <i class="fas fa-phone text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Call Us</h3>
+            <p class="text-gray-600 dark:text-gray-300">+94 11 234 5678</p>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md" data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6">Send Us A Message</h3>
+          <form id="contact-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+              </div>
+              <div>
+                <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+              </div>
+            </div>
+            <div class="mb-4">
+              <input type="text" name="subject" placeholder="Subject" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+            </div>
+            <div class="mb-6">
+              <textarea name="message" placeholder="Your Message" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[150px] dark:bg-gray-800 dark:text-white"></textarea>
+            </div>
+            <button type="submit" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-yellow-500 hover:from-blue-700 hover:to-yellow-600 text-white rounded-md transition-all duration-300">
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-md h-[500px]" data-aos="fade-left">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.662995033746!2d80.5!3d7.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMzAnMDAuMCJOIDgwwrAzMCcwMC4wIkU!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-2xl font-bold mb-4 gradient-text">REVO TECH</h3>
+          <p class="text-gray-400 mb-4">
+            Galahitiya Central College's premier technology society, where innovation meets education.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#home" class="text-gray-400 hover:text-blue-400 transition-colors">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors">About Us</a>
+            </li>
+            <li>
+              <a href="#school" class="text-gray-400 hover:text-blue-400 transition-colors">Our School</a>
+            </li>
+            <li>
+              <a href="#technoriens" class="text-gray-400 hover:text-blue-400 transition-colors">Technoriens</a>
+            </li>
+            <li>
+              <a href="#features" class="text-gray-400 hover:text-blue-400 transition-colors">Activities</a>
+            </li>
+            <li>
+              <a href="#team" class="text-gray-400 hover:text-blue-400 transition-colors">Our Team</a>
+            </li>
+            <li>
+              <a href="#contact" class="text-gray-400 hover:text-blue-400 transition-colors">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-xl font-bold mb-4">Activities</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Coding Workshops</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Web Development</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Mobile App Development</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Robotics</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Hackathons</a>
+            </li>
+          </ul>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="400">
+          <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-2">Address:</span>
+              <span class="text-gray-400">Galahitiya Central College, Galahitiya, Sri Lanka</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-2">Phone:</span>
+              <span class="text-gray-400">+94 11 234 5678</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-2">Email:</span>
+              <span class="text-gray-400">revotech@galahitiyacc.edu.lk</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8">
+        <p class="text-center text-gray-400">
+          © <span id="current-year"></span> REVO TECH - Galahitiya Central College. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // Detect touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) {
+      document.body.classList.add('touch-device');
+    }
+
+    // Initialize AOS with device-specific settings
+    AOS.init({
+      duration: isTouchDevice ? 600 : 800,
+      once: true,
+      offset: 100,
+      disable: window.innerWidth < 768 && isTouchDevice
+    });
+
+    // Data for activities
+    const activities = [
+      {
+        id: 1,
+        icon: '<i class="fas fa-code text-blue-600 text-2xl"></i>',
+        title: "Coding Workshops",
+        description: "Regular workshops on various programming languages and frameworks.",
+        details: [
+          "Weekly hands-on coding sessions",
+          "Project-based learning approach",
+          "Beginner to advanced tracks available",
+          "Taught by industry professionals",
+        ],
+        image: "img/Coding Workshops.jpg",
+        color: "from-blue-500/20 to-blue-600/20",
+        textColor: "text-blue-600",
+      },
+      {
+        id: 2,
+        icon: '<i class="fas fa-laptop text-blue-500 text-2xl"></i>',
+        title: "Web Development",
+        description: "Learn to build modern, responsive websites and web applications.",
+        details: [
+          "Frontend frameworks (React, Vue)",
+          "Backend development (Node.js, Python)",
+          "Database design and implementation",
+          "Deployment and hosting strategies",
+        ],
+        image: "img/Web Development.jpg",
+        color: "from-blue-400/20 to-blue-500/20",
+        textColor: "text-blue-500",
+      },
+      {
+        id: 3,
+        icon: '<i class="fas fa-mobile-alt text-blue-500 text-2xl"></i>',
+        title: "Mobile App Development",
+        description: "Create applications for Android and iOS platforms.",
+        details: [
+          "Native and cross-platform development",
+          "UI/UX design principles",
+          "App store submission process",
+          "Monetization strategies",
+        ],
+        image: "img/Mobile App Development.jpg",
+        color: "from-indigo-500/20 to-indigo-600/20",
+        textColor: "text-indigo-500",
+      },
+      {
+        id: 4,
+        icon: '<i class="fas fa-microchip text-yellow-500 text-2xl"></i>',
+        title: "Robotics",
+        description: "Design and build robots for various applications and competitions.",
+        details: [
+          "Hardware components and assembly",
+          "Programming microcontrollers",
+          "Sensor integration and data processing",
+          "Autonomous robot challenges",
+        ],
+        image: "img/Robotics.jpg",
+        color: "from-yellow-400/20 to-yellow-500/20",
+        textColor: "text-yellow-500",
+      },
+      {
+        id: 5,
+        icon: '<i class="fas fa-globe text-blue-500 text-2xl"></i>',
+        title: "Tech Talks",
+        description: "Guest lectures from industry professionals and academics.",
+        details: [
+          "Monthly speaker series",
+          "Q&A sessions with experts",
+          "Career guidance and mentorship",
+          "Emerging technology trends",
+        ],
+        image: "img/Tech Talks.jpg",
+        color: "from-blue-500/20 to-blue-600/20",
+        textColor: "text-blue-500",
+      },
+      {
+        id: 6,
+        icon: '<i class="fas fa-bolt text-yellow-500 text-2xl"></i>',
+        title: "Hackathons",
+        description: "Participate in coding competitions to solve real-world problems.",
+        details: [
+          "24-hour coding challenges",
+          "Team-based problem solving",
+          "Prizes and recognition",
+          "Networking with industry sponsors",
+        ],
+        image: "img/Hackathons.jpg",
+        color: "from-yellow-400/20 to-yellow-500/20",
+        textColor: "text-yellow-500",
+      },
+      {
+        id: 7,
+        icon: '<i class="fas fa-terminal text-blue-600 text-2xl"></i>',
+        title: "Open Source Projects",
+        description: "Contribute to open source projects and build your portfolio.",
+        details: [
+          "Collaborative development",
+          "Version control with Git",
+          "Code review practices",
+          "Documentation and testing",
+        ],
+        image: "img/Open Source Projects.jpg",
+        color: "from-blue-500/20 to-blue-600/20",
+        textColor: "text-blue-600",
+      },
+      {
+        id: 8,
+        icon: '<i class="fas fa-layer-group text-yellow-500 text-2xl"></i>',
+        title: "Tech Exhibitions",
+        description: "Showcase your projects and innovations to the school and community.",
+        details: [
+          "Annual technology showcase",
+          "Project demonstrations",
+          "Community engagement",
+          "Feedback and improvement cycles",
+        ],
+        image: "img/Tech Exhibitions.jpg",
+        color: "from-yellow-400/20 to-yellow-500/20",
+        textColor: "text-yellow-500",
+      },
+    ];
+
+    // Data for projects
+    const projects = [
+      {
+        id: 1,
+        title: "Smart School Assistant",
+        description: "An AI-powered application that helps students manage assignments, schedules, and provides learning assistance.",
+        image: "img/Smart School Assistant.jpg",
+        category: "software",
+        tags: ["React", "AI", "Firebase"],
+        links: { demo: "#", github: "#" },
+        featured: true,
+      },
+      {
+        id: 2,
+        title: "Automated Classroom Monitor",
+        description: "IoT system that monitors classroom environment factors like temperature, humidity, and noise levels.",
+        image: "img/Automated Classroom Monitor.jpg",
+        category: "hardware",
+        tags: ["IoT", "Arduino", "Cloud"],
+        links: { demo: "#", github: "#" },
+        featured: false,
+      },
+      {
+        id: 3,
+        title: "School Events Portal",
+        description: "Web platform for managing and promoting school events, competitions, and activities.",
+        image: "img/School Events Portal.jpg",
+        category: "software",
+        tags: ["Next.js", "MongoDB", "Tailwind"],
+        links: { demo: "#", github: "#" },
+        featured: true,
+      },
+      {
+        id: 4,
+        title: "Learning Resources Hub",
+        description: "Centralized platform for students to access educational resources, tutorials, and practice problems.",
+        image: "img/Learning Resources Hub.jpg",
+        category: "software",
+        tags: ["Vue", "Node.js", "Express"],
+        links: { demo: "#", github: "#" },
+        featured: false,
+      },
+      {
+        id: 5,
+        title: "Automated Plant Watering System",
+        description: "Smart irrigation system that monitors soil moisture and waters plants automatically.",
+        image: "img/smart-farming-with-agriculture-iot.jpg",
+        category: "hardware",
+        tags: ["Arduino", "Sensors", "Automation"],
+        links: { demo: "#", github: "#" },
+        featured: false,
+      },
+      {
+        id: 6,
+        title: "AR Campus Tour",
+        description: "Augmented reality application that provides an interactive tour of the school campus.",
+        image: "img/AR Campus Tour.jpg",
+        category: "mobile",
+        tags: ["AR", "Unity", "Mobile"],
+        links: { demo: "#", github: "#" },
+        featured: true,
+      },
+    ];
+
+    // Data for testimonials
+    const testimonials = [
+      {
+        id: 1,
+        content: "REVO TECH has completely transformed my interest in technology. The workshops and mentorship I received helped me develop skills I never thought I could learn!",
+        author: {
+          name: "Dinesh Rajapaksa",
+          role: "Senior Student",
+          avatar: "img/boy.jpg",
+        },
+      },
+      {
+        id: 2,
+        content: "Being part of REVO TECH's coding team opened up so many opportunities for me. I went from knowing nothing about programming to building my own applications in just one year.",
+        author: {
+          name: "Kumari Jayawardena",
+          role: "Junior Student",
+          avatar: "img/girl.jpg",
+        },
+      },
+      {
+        id: 3,
+        content: "The robotics project we completed with REVO TECH won first place at the national competition. The guidance and resources provided by the society were invaluable.",
+        author: {
+          name: "Lakshan Fernando",
+          role: "Former Member",
+          avatar: "img/boy.jpg",
+        },
+      },
+      {
+        id: 4,
+        content: "As a student with no prior tech background, I was intimidated at first. But the welcoming environment and step-by-step learning approach at REVO TECH made it easy to catch up.",
+        author: {
+          name: "Priya Bandara",
+          role: "New Member",
+          avatar: "img/girl.jpg",
+        },
+      },
+    ];
+
+    // Data for team members
+    const teamMembers = [
+      {
+        name: "Amal Perera",
+        role: "President",
+        image: "img/boy.jpg",
+        bio: "Computer Science enthusiast with a passion for web development and AI.",
+      },
+      {
+        name: "Nimal Fernando",
+        role: "Vice President",
+        image: "img/boy.jpg",
+        bio: "Robotics expert and programming mentor with 3 years of experience.",
+      },
+      {
+        name: "Kamala Silva",
+        role: "Secretary",
+        image: "img/girl.jpg",
+        bio: "Mobile app developer specializing in cross-platform solutions.",
+      },
+      {
+        name: "Saman Kumara",
+        role: "Treasurer",
+        image: "img/boy.jpg",
+        bio: "Cybersecurity specialist with a background in network administration.",
+      },
+    ];
+
+    // DOM elements
+    const navbar = document.getElementById('navbar');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const closeMenu = document.getElementById('close-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const scrollIndicator = document.getElementById('scroll-indicator');
+    const backToTop = document.getElementById('back-to-top');
+    const activitiesContainer = document.getElementById('activities-container');
+    const filterButton = document.getElementById('filter-button');
+    const filterDropdown = document.getElementById('filter-dropdown');
+    const showAllButton = document.getElementById('show-all');
+    const showFeaturedButton = document.getElementById('show-featured');
+    const featuredBadge = document.getElementById('featured-badge');
+    const projectsSlider = document.querySelector('.slider');
+    const prevSlideButton = document.getElementById('prev-slide');
+    const nextSlideButton = document.getElementById('next-slide');
+    const sliderDots = document.getElementById('slider-dots');
+    const testimonialSlider = document.getElementById('testimonials-slider');
+    const prevTestimonialButton = document.getElementById('prev-testimonial');
+    const nextTestimonialButton = document.getElementById('next-testimonial');
+    const testimonialDots = document.getElementById('testimonial-dots');
+    const teamContainer = document.getElementById('team-container');
+    const contactForm = document.getElementById('contact-form');
+    const currentYearSpan = document.getElementById('current-year');
+    const heroCardContainer = document.getElementById('hero-card-container');
+    const particlesContainer = document.getElementById('particles-container');
+
+    // Set current year in footer
+    currentYearSpan.textContent = new Date().getFullYear();
+
+    // Theme toggle functionality
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Event listeners
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggleMobile.addEventListener('click', toggleTheme);
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open');
+      if (mobileMenu.classList.contains('active')) {
+        mobileMenuToggle.innerHTML = '<i class="fas fa-times"></i>';
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        document.body.classList.remove('menu-open');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('bg-white/80', 'dark:bg-gray-950/80', 'backdrop-blur-md', 'py-2', 'shadow-md');
+        navbar.classList.remove('py-4', 'bg-transparent');
+      } else {
+        navbar.classList.remove('bg-white/80', 'dark:bg-gray-950/80', 'backdrop-blur-md', 'py-2', 'shadow-md');
+        navbar.classList.add('py-4', 'bg-transparent');
+      }
+
+      // Hide scroll indicator when scrolled
+      if (window.scrollY > 100) {
+        scrollIndicator.classList.add('opacity-0');
+        setTimeout(() => {
+          scrollIndicator.classList.add('hidden');
+        }, 300);
+      } else {
+        scrollIndicator.classList.remove('hidden');
+        setTimeout(() => {
+          scrollIndicator.classList.remove('opacity-0');
+        }, 10);
+      }
+
+      // Show/hide back to top button
+      if (window.scrollY > 500) {
+        backToTop.classList.remove('opacity-0', 'invisible');
+      } else {
+        backToTop.classList.add('opacity-0', 'invisible');
+      }
+
+      // Active nav link based on scroll position
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-medium');
+        if (link.getAttribute('data-section') === current) {
+          link.classList.add('text-blue-600', 'dark:text-blue-400', 'font-medium');
+        }
+      });
+
+      mobileNavLinks.forEach(link => {
+        link.classList.remove('bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400', 'font-medium');
+        if (link.getAttribute('data-section') === current) {
+          link.classList.add('bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-600', 'dark:text-blue-400', 'font-medium');
+        }
+      });
+    });
+
+    // Back to top button
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Hero section parallax effect - optimized for mobile
+    function handleParallax(e) {
+      if (isTouchDevice) return; // Skip parallax on touch devices
+      
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      
+      const centerX = windowWidth / 2;
+      const centerY = windowHeight / 2;
+      
+      const moveX = (mouseX - centerX) / 25;
+      const moveY = (mouseY - centerY) / 25;
+      
+      if (heroCardContainer) {
+        heroCardContainer.style.transform = `rotateY(${moveX * 0.02}deg) rotateX(${-moveY * 0.02}deg)`;
+      }
+      
+      document.querySelectorAll('.hero-card').forEach(card => {
+        const offset = parseFloat(card.getAttribute('data-offset')) || 0;
+        card.style.transform = `translateX(${moveX * offset}px) translateY(${moveY * offset}px)`;
+      });
+    }
+    
+    // Only add mouse move event listener on non-touch devices
+    if (!isTouchDevice) {
+      document.addEventListener('mousemove', handleParallax);
+    }
+
+    // Create particles for hero section - optimized for different devices
+    function createParticles() {
+      if (!particlesContainer) return;
+      
+      // Adjust particle count based on device capabilities
+      const isLowPowerDevice = window.matchMedia('(prefers-reduced-motion)').matches || 
+                           navigator.hardwareConcurrency <= 4 || 
+                           window.innerWidth < 640;
+      
+      const particleCount = isLowPowerDevice ? 5 : (window.innerWidth < 768 ? 8 : (isTouchDevice ? 12 : 20));
+      particlesContainer.innerHTML = '';
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * (isLowPowerDevice ? 3 : (window.innerWidth < 768 ? 4 : 8)) + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const duration = Math.random() * (isLowPowerDevice ? 10 : 15) + 10;
+        const delay = Math.random() * 2;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        
+        if (!isLowPowerDevice) {
+          particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
+        }
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    createParticles();
+    window.addEventListener('resize', createParticles);
+
+    // Render activities with touch support
+    function renderActivities() {
+      if (!activitiesContainer) return;
+      
+      activitiesContainer.innerHTML = '';
+      
+      activities.forEach((activity, index) => {
+        const activityCard = document.createElement('div');
+        activityCard.className = 'card-hover cursor-pointer';
+        activityCard.setAttribute('data-aos', 'fade-up');
+        activityCard.setAttribute('data-aos-delay', `${index * 100}`);
+        
+        activityCard.innerHTML = `
+          <div class="h-full border-none shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group bg-white dark:bg-gray-900 rounded-xl">
+            <div class="p-0 h-full">
+              <div class="relative h-32 bg-gradient-to-br ${activity.color} flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 opacity-20">
+                  <img src="${activity.image}" alt="${activity.title}" class="w-full h-full object-cover object-center">
+                </div>
+                <div class="relative z-10 ${activity.textColor} bg-white dark:bg-gray-800 rounded-full p-4 transform transition-transform duration-500">
+                  ${activity.icon}
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-white dark:from-gray-800 to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-xl font-bold mb-2 ${activity.textColor} flex items-center">
+                  ${activity.title}
+                  <i class="fas fa-chevron-right ml-auto transition-transform duration-300"></i>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">${activity.description}</p>
+                <div class="activity-details hidden">
+                  <ul class="space-y-2 mb-4">
+                    ${activity.details.map((detail, i) => `
+                      <li class="flex items-start">
+                        <span class="${activity.textColor} mr-2 text-lg">•</span>
+                        <span class="text-gray-600 dark:text-gray-300 text-sm">${detail}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                  <a href="#" class="inline-block w-full text-center px-4 py-2 rounded-md bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white">
+                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        activitiesContainer.appendChild(activityCard);
+        
+        // Toggle activity details - with improved touch support
+        activityCard.addEventListener(isTouchDevice ? 'touchend' : 'click', function(e) {
+          if (isTouchDevice) {
+            e.preventDefault();
+            // Add a small delay to distinguish between scrolling and tapping
+            if (this.touchTimeout) clearTimeout(this.touchTimeout);
+            this.touchTimeout = setTimeout(() => {
+              toggleActivityDetails(this);
+            }, 100);
+          } else {
+            toggleActivityDetails(this);
+          }
+        });
+
+        // Separate function to toggle details
+        function toggleActivityDetails(card) {
+          const details = card.querySelector('.activity-details');
+          const chevron = card.querySelector('.fa-chevron-right');
+          
+          if (details.classList.contains('hidden')) {
+            // Close any other open cards first
+            document.querySelectorAll('.activity-details:not(.hidden)').forEach(openDetail => {
+              openDetail.classList.add('hidden');
+              openDetail.closest('.card-hover').classList.remove('active');
+              openDetail.closest('.card-hover').querySelector('.fa-chevron-right').classList.remove('rotate-90');
+              openDetail.closest('.card-hover').classList.remove('ring-2', 'ring-blue-500', 'ring-offset-2', 'dark:ring-offset-gray-900');
+            });
+            
+            details.classList.remove('hidden');
+            chevron.classList.add('rotate-90');
+            card.classList.add('active');
+            card.classList.add('ring-2', 'ring-blue-500', 'ring-offset-2', 'dark:ring-offset-gray-900');
+          } else {
+            details.classList.add('hidden');
+            chevron.classList.remove('rotate-90');
+            card.classList.remove('active');
+            card.classList.remove('ring-2', 'ring-blue-500', 'ring-offset-2', 'dark:ring-offset-gray-900');
+          }
+        }
+      });
+    }
+    
+    renderActivities();
+
+    // Projects filter and slider functionality with touch support
+    let currentSlide = 0;
+    let showFeaturedOnly = false;
+    let activeCategory = 'all';
+    let startX, moveX;
+    
+    // Filter dropdown
+    filterButton.addEventListener('click', () => {
+      filterDropdown.classList.toggle('hidden');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!filterButton.contains(e.target) && !filterDropdown.contains(e.target)) {
+        filterDropdown.classList.add('hidden');
+      }
+    });
+    
+    // Filter buttons
+    showAllButton.addEventListener('click', () => {
+      showFeaturedOnly = false;
+      featuredBadge.classList.add('hidden');
+      showAllButton.classList.add('font-bold');
+      showFeaturedButton.classList.remove('font-bold');
+      filterDropdown.classList.add('hidden');
+      renderProjects();
+    });
+    
+    showFeaturedButton.addEventListener('click', () => {
+      showFeaturedOnly = true;
+      featuredBadge.classList.remove('hidden');
+      showFeaturedButton.classList.add('font-bold');
+      showAllButton.classList.remove('font-bold');
+      filterDropdown.classList.add('hidden');
+      renderProjects();
+    });
+    
+    // Tab functionality
+    document.querySelectorAll('.tab-trigger').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        const category = tab.getAttribute('data-category');
+        activeCategory = category;
+        
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        document.querySelector(`.tab-content[data-category="${category}"]`).classList.add('active');
+        
+        currentSlide = 0;
+        renderProjects();
+      });
+    });
+    
+    // Render projects with touch support
+    function renderProjects() {
+      if (!projectsSlider) return;
+      
+      const filteredProjects = projects.filter(project => {
+        if (activeCategory === 'all') {
+          return showFeaturedOnly ? project.featured : true;
+        } else {
+          return project.category === activeCategory && (showFeaturedOnly ? project.featured : true);
+        }
+      });
+      
+      // Projects per slide (2 on desktop, 1 on mobile)
+      const projectsPerSlide = window.innerWidth < 768 ? 1 : 2;
+      const totalSlides = Math.ceil(filteredProjects.length / projectsPerSlide);
+      
+      // Update slider
+      projectsSlider.innerHTML = '';
+      
+      if (filteredProjects.length === 0) {
+        projectsSlider.innerHTML = `
+          <div class="flex flex-col items-center justify-center py-16 text-center">
+            <div class="bg-blue-100 dark:bg-blue-900/30 p-4 rounded-full mb-4">
+              <i class="fas fa-filter text-blue-600 dark:text-blue-400 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2">No projects found</h3>
+            <p class="text-gray-600 dark:text-gray-400 max-w-md mb-6">
+              No projects match your current filter criteria. Try changing your filters or check back later for new projects.
+            </p>
+            <button id="reset-filters" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">
+              Reset Filters
+            </button>
+          </div>
+        `;
+        
+        document.getElementById('reset-filters').addEventListener('click', () => {
+          showFeaturedOnly = false;
+          activeCategory = 'all';
+          featuredBadge.classList.add('hidden');
+          showAllButton.classList.add('font-bold');
+          showFeaturedButton.classList.remove('font-bold');
+          
+          document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
+          document.querySelector('.tab-trigger[data-category="all"]').classList.add('active');
+          
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+          });
+          document.querySelector('.tab-content[data-category="all"]').classList.add('active');
+          
+          renderProjects();
+        });
+        
+        return;
+      }
+      
+      // Create slides
+      const currentProjects = filteredProjects.slice(currentSlide * projectsPerSlide, (currentSlide * projectsPerSlide) + projectsPerSlide);
+      
+      currentProjects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'h-full';
+        
+        projectCard.innerHTML = `
+          <div class="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 h-full group bg-white dark:bg-gray-900 rounded-xl card-hover">
+            <div class="p-0 h-full">
+              <div class="relative h-52 overflow-hidden">
+                <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-70"></div>
+                
+                ${project.featured ? `
+                  <div class="absolute top-4 right-4">
+                    <span class="bg-yellow-500 hover:bg-yellow-600 text-white text-xs px-2 py-1 rounded-full">Featured</span>
+                  </div>
+                ` : ''}
+                
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                  ${project.tags.map(tag => `
+                    <span class="bg-blue-600 hover:bg-blue-700 text-white text-xs px-2 py-1 rounded-full">${tag}</span>
+                  `).join('')}
+                </div>
+                
+                <div class="absolute inset-0 bg-blue-600/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                    <i class="fas fa-external-link-alt text-blue-600 text-xl"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 flex flex-col h-[calc(100%-13rem)]">
+                <h3 class="text-xl font-bold mb-2 text-blue-700 dark:text-blue-400">${project.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">${project.description}</p>
+                <div class="flex space-x-3">
+                  <a href="${project.links.github}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-2 rounded-full border border-blue-200 hover:border-blue-300 hover:bg-blue-50 dark:border-blue-800 dark:hover:border-blue-700 dark:hover:bg-blue-900/30 transition-all text-sm">
+                    <i class="fab fa-github mr-1"></i> Code
+                  </a>
+                  <a href="${project.links.demo}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-3 py-2 rounded-full bg-blue-600 hover:bg-blue-700 transition-all text-white text-sm">
+                    <i class="fas fa-external-link-alt mr-1"></i> Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        projectsSlider.appendChild(projectCard);
+      });
+      
+      // Update slider dots
+      sliderDots.innerHTML = '';
+      
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `h-2.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'w-6 bg-blue-600' : 'w-2.5 bg-blue-200 dark:bg-blue-800 hover:bg-blue-300 dark:hover:bg-blue-700'}`;
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        
+        dot.addEventListener('click', () => {
+          currentSlide = i;
+          renderProjects();
+        });
+        
+        sliderDots.appendChild(dot);
+      }
+      
+      // Update slider navigation
+      if (prevSlideButton && nextSlideButton) {
+        prevSlideButton.disabled = currentSlide === 0;
+        nextSlideButton.disabled = currentSlide === totalSlides - 1;
+      }
+    }
+    
+    // Slider navigation
+    if (prevSlideButton && nextSlideButton) {
+      prevSlideButton.addEventListener('click', () => {
+        if (currentSlide > 0) {
+          currentSlide--;
+          renderProjects();
+        }
+      });
+      
+      nextSlideButton.addEventListener('click', () => {
+        const filteredProjects = projects.filter(project => {
+          if (activeCategory === 'all') {
+            return showFeaturedOnly ? project.featured : true;
+          } else {
+            return project.category === activeCategory && (showFeaturedOnly ? project.featured : true);
+          }
+        });
+        
+        const projectsPerSlide = window.innerWidth < 768 ? 1 : 2;
+        const totalSlides = Math.ceil(filteredProjects.length / projectsPerSlide);
+        
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          renderProjects();
+        }
+      });
+    }
+    
+    // Add improved touch swipe support for sliders with velocity detection
+    if (isTouchDevice) {
+      const sliderContainer = document.querySelector('.slider-container');
+      
+      if (sliderContainer) {
+        let touchStartTime, touchEndTime;
+        
+        sliderContainer.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          touchStartTime = new Date().getTime();
+        }, { passive: true });
+        
+        sliderContainer.addEventListener('touchmove', (e) => {
+          if (!startX) return;
+          moveX = e.touches[0].clientX;
+          
+          // Add live tracking effect if needed
+          const diff = startX - moveX;
+          if (Math.abs(diff) > 20) {
+            e.preventDefault(); // Prevent page scrolling when swiping slider
+          }
+        }, { passive: false });
+        
+        sliderContainer.addEventListener('touchend', () => {
+          if (!startX || !moveX) return;
+          
+          touchEndTime = new Date().getTime();
+          const diff = startX - moveX;
+          const timeDiff = touchEndTime - touchStartTime;
+          const velocity = Math.abs(diff) / timeDiff;
+          const threshold = velocity > 0.5 ? 30 : 50; // Lower threshold for faster swipes
+          
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              // Swipe left - next slide
+              nextSlideButton.click();
+            } else {
+              // Swipe right - previous slide
+              prevSlideButton.click();
+            }
+          }
+          
+          startX = null;
+          moveX = null;
+        }, { passive: true });
+      }
+    }
+    
+    renderProjects();
+
+    // Testimonials slider with touch support
+    let currentTestimonial = 0;
+    
+    function renderTestimonials() {
+      if (!testimonialSlider) return;
+      
+      testimonialSlider.innerHTML = `
+        <div class="border-none shadow-lg bg-blue-50/50 dark:bg-blue-900/10 p-2 rounded-xl">
+          <div class="pt-6 md:pt-8 flex flex-col items-center text-center space-y-4 md:space-y-6 px-4 md:px-10">
+            <p class="text-lg md:text-xl lg:text-2xl font-medium italic text-gray-700 dark:text-gray-200 leading-relaxed">
+              "${testimonials[currentTestimonial].content}"
+            </p>
+
+            <div class="pt-4 flex flex-col items-center">
+              <div class="h-16 w-16 md:h-20 md:w-20 rounded-full border-4 border-white dark:border-gray-800 shadow-md overflow-hidden">
+                <img src="${testimonials[currentTestimonial].author.avatar}" alt="${testimonials[currentTestimonial].author.name}" class="w-full h-full object-cover">
+              </div>
+              <h4 class="mt-4 text-lg font-bold text-blue-700 dark:text-blue-400">
+                ${testimonials[currentTestimonial].author.name}
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400">${testimonials[currentTestimonial].author.role}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Update testimonial dots
+      testimonialDots.innerHTML = '';
+      
+      testimonials.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.className = `h-2.5 rounded-full transition-all duration-300 ${index === currentTestimonial ? 'w-6 bg-blue-600' : 'w-2.5 bg-blue-200 dark:bg-blue-800'}`;
+        dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
+        
+        dot.addEventListener('click', () => {
+          currentTestimonial = index;
+          renderTestimonials();
+        });
+        
+        testimonialDots.appendChild(dot);
+      });
+    }
+    
+    // Testimonial navigation
+    if (prevTestimonialButton && nextTestimonialButton) {
+      prevTestimonialButton.addEventListener('click', () => {
+        currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+        renderTestimonials();
+      });
+      
+      nextTestimonialButton.addEventListener('click', () => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        renderTestimonials();
+      });
+      
+      // Add touch swipe support for testimonials
+      if (isTouchDevice && testimonialSlider) {
+        testimonialSlider.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        testimonialSlider.addEventListener('touchmove', (e) => {
+          if (!startX) return;
+          moveX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        testimonialSlider.addEventListener('touchend', () => {
+          if (!startX || !moveX) return;
+          
+          const diff = startX - moveX;
+          const threshold = 50; // Minimum swipe distance
+          
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              // Swipe left - next testimonial
+              nextTestimonialButton.click();
+            } else {
+              // Swipe right - previous testimonial
+              prevTestimonialButton.click();
+            }
+          }
+          
+          startX = null;
+          moveX = null;
+        }, { passive: true });
+      }
+    }
+    
+    renderTestimonials();
+
+    // Render team members with touch support
+    function renderTeam() {
+      if (!teamContainer) return;
+      
+      teamContainer.innerHTML = '';
+      
+      teamMembers.forEach((member, index) => {
+        const teamCard = document.createElement('div');
+        teamCard.className = 'group';
+        teamCard.setAttribute('data-aos', 'fade-up');
+        teamCard.setAttribute('data-aos-delay', `${index * 100}`);
+        
+        teamCard.innerHTML = `
+          <div class="overflow-hidden border-none shadow-lg h-full bg-white dark:bg-gray-900 rounded-xl card-hover">
+            <div class="p-0">
+              <div class="relative overflow-hidden">
+                <img src="${member.image}" alt="${member.name}" class="w-full h-64 object-cover object-center transition-transform duration-500 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div class="p-4 w-full">
+                    <div class="flex justify-center space-x-2 social-buttons transition-opacity duration-300">
+                      <button class="p-2 bg-white/20 hover:bg-white/30 text-white rounded-full" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                      </button>
+                      <button class="p-2 bg-white/20 hover:bg-white/30 text-white rounded-full" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                      </button>
+                      <button class="p-2 bg-white/20 hover:bg-white/30 text-white rounded-full" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-1">${member.name}</h3>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-3">${member.role}</p>
+                <p class="text-gray-600 dark:text-gray-300">${member.bio}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        teamContainer.appendChild(teamCard);
+        
+        // Add touch interaction for team cards
+        if (isTouchDevice) {
+          const card = teamCard.querySelector('.card-hover');
+          const overlay = teamCard.querySelector('.bg-gradient-to-t');
+          
+          card.addEventListener('touchstart', function() {
+            overlay.style.opacity = '1';
+          });
+          
+          card.addEventListener('touchend', function() {
+            setTimeout(() => {
+              overlay.style.opacity = '0';
+            }, 1000);
+          });
+        }
+      });
+    }
+    
+    renderTeam();
+
+    // Contact form with improved validation
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Basic form validation
+        const email = contactForm.querySelector('input[name="email"]').value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address');
+          return;
+        }
+        
+        // Simulate form submission
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+        
+        setTimeout(() => {
+          // Show success message
+          const formData = new FormData(contactForm);
+          const name = formData.get('name');
+          
+          contactForm.innerHTML = `
+            <div class="text-center py-8">
+              <div class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-check text-green-600 text-2xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-2">Message Sent!</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">Thank you, ${name}! We'll get back to you soon.</p>
+              <button type="button" id="reset-form" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all duration-300">
+                Send Another Message
+              </button>
+            </div>
+          `;
+          
+          // Reset form button
+          document.getElementById('reset-form').addEventListener('click', () => {
+            contactForm.innerHTML = `
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+                </div>
+                <div>
+                  <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+                </div>
+              </div>
+              <div class="mb-4">
+                <input type="text" name="subject" placeholder="Subject" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-white">
+              </div>
+              <div class="mb-6">
+                <textarea name="message" placeholder="Your Message" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[150px] dark:bg-gray-800 dark:text-white"></textarea>
+              </div>
+              <button type="submit" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-yellow-500 hover:from-blue-700 hover:to-yellow-600 text-white rounded-md transition-all duration-300">
+                Send Message
+              </button>
+            `;
+          });
+        }, 2000);
+      });
+    }
+
+    // Check for low-power devices and mobile performance
+    function optimizeForDevice() {
+      const isLowPowerDevice = navigator.hardwareConcurrency <= 2 || 
+                          window.innerWidth < 640 || 
+                          window.matchMedia('(prefers-reduced-motion)').matches;
+  
+      if (isLowPowerDevice) {
+        // Reduce animations and effects for better performance
+        document.querySelectorAll('[data-aos]').forEach(el => {
+          el.removeAttribute('data-aos');
+        });
+    
+        // Reduce animation complexity
+        document.querySelectorAll('.animate-ping-slow, .animate-gradient').forEach(el => {
+          el.classList.remove('animate-ping-slow', 'animate-gradient');
+        });
+    
+        // Use simpler background effects
+        document.querySelectorAll('.bg-gradient-to-br, .bg-gradient-to-r').forEach(el => {
+          el.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+        });
+      }
+    }
+
+    // Call this during initialization
+    optimizeForDevice();
+
+    // Enhanced resize handler with performance optimizations
+    let resizeTimer;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        // Reset current slide for projects
+        currentSlide = 0;
+        renderProjects();
+    
+        // Recreate particles for optimal performance
+        createParticles();
+    
+        // Re-check device optimizations
+        optimizeForDevice();
+      }, 250);
+    };
+
+    window.addEventListener('resize', debouncedResize);
+
+    // Add touch-specific interactions for hero cards
+    if (isTouchDevice) {
+      document.querySelectorAll('.hero-card').forEach(card => {
+        card.addEventListener('touchstart', function() {
+          this.classList.add('scale-105');
+          this.style.transition = 'transform 0.3s ease';
+        });
+        
+        card.addEventListener('touchend', function() {
+          setTimeout(() => {
+            this.classList.remove('scale-105');
+          }, 200);
+        });
+      });
+    }
+
+    // Add this to your existing JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile-specific interactions
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        const mobileCards = document.querySelectorAll('.md\\:hidden .bg-white\\/10');
+        
+        mobileCards.forEach(card => {
+          card.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(1.05)';
+          });
+          
+          card.addEventListener('touchend', function() {
+            setTimeout(() => {
+              this.style.transform = 'scale(1)';
+            }, 200);
+          });
+        });
+      }
+    });
+
+    // Mobile menu functionality
+    function openMobileMenu() {
+      mobileMenu.classList.remove('translate-x-full');
+      menuOverlay.classList.remove('opacity-0', 'invisible');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('translate-x-full');
+      menuOverlay.classList.add('opacity-0', 'invisible');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    mobileMenuToggle.addEventListener('click', openMobileMenu);
+    closeMenu.addEventListener('click', closeMobileMenu);
+    menuOverlay.addEventListener('click', closeMobileMenu);
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+        closeMobileMenu();
+      }
+    });
+  </script>
+  <script>
+    // Always scroll to top on page load (unless there's a hash in the URL)
+    window.addEventListener('DOMContentLoaded', function() {
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+    });
+  </script>
+</body>
+</html>
